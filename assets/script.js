@@ -1,8 +1,27 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
+$(document).ready(function () {
+  var changeClass = "class";
+  var pastAtt = "row time-block past";
+  var presentAtt = "row time-block present";
+  var futureAtt = "row time-block future";
+  var currentDate = new Date();
+  var time = currentDate.getHours();
+  var saveButton = $("button");
+  var timeArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+  var timeIds = [
+    $("#hour-9"),
+    $("#hour-10"),
+    $("#hour-11"),
+    $("#hour-12"),
+    $("#hour-13"),
+    $("#hour-14"),
+    $("#hour-15"),
+    $("#hour-16"),
+    $("#hour-17"),
+  ];
 
-$(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
