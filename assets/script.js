@@ -43,6 +43,14 @@ for (i = 0; i < timeArray.length; i++) {
   }
 }
 
+saveIcon.on("click", function (event) {
+  var saveIc = $(event.target);
+  var boxText = saveIc.parent().siblings("textarea").val();
+  localStorage.setItem(saveIc.parent().parent("div").attr("id"), boxText);
+  showSave();
+  setTimeout(hideSave, 2000);
+});
+
 saveButton.on("click", function (event) {
   var saveBox = $(event.target);
   var boxText = saveBox.siblings("textarea").val();
