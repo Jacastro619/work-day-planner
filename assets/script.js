@@ -9,8 +9,10 @@ var presentAtt = "row time-block present";
 var futureAtt = "row time-block future";
 var time = dayjs().format("H");
 var saveButton = $(".saveBtn");
-var saveAlert = $(".alert-success");
 var saveIcon = $("i");
+var saveAlert = $(".alert-success");
+var clearAlert = $(".alert-danger");
+var clearAll = $("#clear-all");
 var timeArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
 var timeIds = [
   $("#hour-9"),
@@ -45,6 +47,14 @@ function hideSave() {
   saveAlert.attr("style", "visibility: hidden;");
 }
 
+function showClear() {
+  clearAlert.attr("style", "visibility: visible;");
+}
+
+function hideClear() {
+  clearAlert.attr("style", "visibility: hidden;");
+}
+
 function loadText() {
   for (i = 0; i < keyArray.length; i++) {
     var text = localStorage.getItem(keyArray[i]);
@@ -76,6 +86,15 @@ saveButton.on("click", function (event) {
   localStorage.setItem(saveBox.parent("div").attr("id"), boxText);
   showSave();
   setTimeout(hideSave, 2000);
+});
+
+clearAll.on("click", function () {
+  for (i = 0; i < timeIds.length; i++) {
+    timeIds[i].children("textarea").val("");
+  }
+  localStorage.clear();
+  showClear();
+  setTimeout(hideClear, 2000);
 });
 
 $(function () {
