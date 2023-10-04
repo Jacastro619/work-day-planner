@@ -1,27 +1,39 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-$(document).ready(function () {
-  var changeClass = "class";
-  var pastAtt = "row time-block past";
-  var presentAtt = "row time-block present";
-  var futureAtt = "row time-block future";
-  var currentDate = new Date();
-  var time = currentDate.getHours();
-  var saveButton = $("button");
-  var timeArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-  var timeIds = [
-    $("#hour-9"),
-    $("#hour-10"),
-    $("#hour-11"),
-    $("#hour-12"),
-    $("#hour-13"),
-    $("#hour-14"),
-    $("#hour-15"),
-    $("#hour-16"),
-    $("#hour-17"),
-  ];
+var date = dayjs().format("dddd, MMMM D");
+var dateDisplay = $("#currentDay");
+var changeClass = "class";
+var pastAtt = "row time-block past";
+var presentAtt = "row time-block present";
+var futureAtt = "row time-block future";
+var time = dayjs().format("H");
+var saveButton = $(".saveBtn");
+var timeArray = [9, 10, 11, 12, 13, 14, 15, 16, 17];
+var timeIds = [
+  $("#hour-9"),
+  $("#hour-10"),
+  $("#hour-11"),
+  $("#hour-12"),
+  $("#hour-13"),
+  $("#hour-14"),
+  $("#hour-15"),
+  $("#hour-16"),
+  $("#hour-17"),
+];
+var keyArray = [
+  "hour-9",
+  "hour-10",
+  "hour-11",
+  "hour-12",
+  "hour-13",
+  "hour-14",
+  "hour-15",
+  "hour-16",
+  "hour-17",
+];
 
+$(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -41,3 +53,13 @@ $(document).ready(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+// global event listener for save button
+// traverse the DOM to select the time block and save to local storage
+// declare current time in a variable using dayjs
+// put DOM Nodes in an array to iterate over
+// use loop to assign past,present,future classes based on 'if' results
+// grab from local storage
+// put content from local storage into the respective time block by setting the value
+// set time variable for current date using dayjs
+// display time in apporpiate spot on page
