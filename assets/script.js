@@ -33,6 +33,22 @@ var keyArray = [
   "hour-17",
 ];
 
+for (i = 0; i < timeArray.length; i++) {
+  if (timeArray[i] < time) {
+    timeIds[i].attr(changeClass, pastAtt);
+  } else if (timeArray[i] == time) {
+    timeIds[i].attr(changeClass, presentAtt);
+  } else {
+    timeIds[i].attr(changeClass, futureAtt);
+  }
+}
+
+saveButton.on("click", function (event) {
+  var saveBox = $(event.target);
+  var boxText = saveBox.siblings("textarea").val();
+  localStorage.setItem(saveBox.parent("div").attr("id"), boxText);
+});
+
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
